@@ -10,12 +10,25 @@
 		3F03542B1D10952900DEA065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F03542A1D10952900DEA065 /* main.m */; };
 		3F03542E1D10952900DEA065 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F03542D1D10952900DEA065 /* AppDelegate.m */; };
 		3F0354311D10952900DEA065 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0354301D10952900DEA065 /* ViewController.m */; };
-		3F0354341D10952900DEA065 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0354321D10952900DEA065 /* Main.storyboard */; };
 		3F0354361D10952900DEA065 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F0354351D10952900DEA065 /* Assets.xcassets */; };
 		3F0354391D10952900DEA065 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0354371D10952900DEA065 /* LaunchScreen.storyboard */; };
+		3F0354411D1099EB00DEA065 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F0354401D1099EB00DEA065 /* GoogleService-Info.plist */; };
+		3F0354421D109C0C00DEA065 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0354321D10952900DEA065 /* Main.storyboard */; };
+		3F9026CD1D11D6D0002C79F2 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F9026CC1D11D6D0002C79F2 /* Logo.png */; };
+		3F9026CF1D11D908002C79F2 /* LogoText.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F9026CE1D11D908002C79F2 /* LogoText.png */; };
+		3F9026D11D11DB79002C79F2 /* photo-1439736637365-748f240b24fb.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3F9026D01D11DB79002C79F2 /* photo-1439736637365-748f240b24fb.jpeg */; };
+		3F9026D31D11E474002C79F2 /* LogoTextBold.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F9026D21D11E474002C79F2 /* LogoTextBold.png */; };
+		3F9026D41D11E67D002C79F2 /* Latinotype - Branding-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9026C61D11CC19002C79F2 /* Latinotype - Branding-Light.otf */; };
+		3F9026D51D11E67D002C79F2 /* Latinotype - Branding-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9026C71D11CC19002C79F2 /* Latinotype - Branding-Medium.otf */; };
+		3F9026D61D11E67D002C79F2 /* Latinotype - Branding-Semilight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9026C81D11CC19002C79F2 /* Latinotype - Branding-Semilight.otf */; };
+		3F9026D71D11E67D002C79F2 /* Latinotype - Branding-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9026C91D11CC19002C79F2 /* Latinotype - Branding-Thin.otf */; };
+		3F9026DA1D11EE9D002C79F2 /* Latinotype - Branding-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9026D81D11EE9D002C79F2 /* Latinotype - Branding-Black.otf */; };
+		3F9026DB1D11EE9D002C79F2 /* Latinotype - Branding-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9026D91D11EE9D002C79F2 /* Latinotype - Branding-Bold.otf */; };
+		60400BA3B0E39FCC99A06D5E /* libPods-NETMAPv2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 316ACCD559EA37575DAB1F44 /* libPods-NETMAPv2.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		316ACCD559EA37575DAB1F44 /* libPods-NETMAPv2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NETMAPv2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0354261D10952900DEA065 /* NETMAPv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NETMAPv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F03542A1D10952900DEA065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3F03542C1D10952900DEA065 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +39,19 @@
 		3F0354351D10952900DEA065 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F0354381D10952900DEA065 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F03543A1D10952900DEA065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F0354401D1099EB00DEA065 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3F9026C61D11CC19002C79F2 /* Latinotype - Branding-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Latinotype - Branding-Light.otf"; sourceTree = "<group>"; };
+		3F9026C71D11CC19002C79F2 /* Latinotype - Branding-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Latinotype - Branding-Medium.otf"; sourceTree = "<group>"; };
+		3F9026C81D11CC19002C79F2 /* Latinotype - Branding-Semilight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Latinotype - Branding-Semilight.otf"; sourceTree = "<group>"; };
+		3F9026C91D11CC19002C79F2 /* Latinotype - Branding-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Latinotype - Branding-Thin.otf"; sourceTree = "<group>"; };
+		3F9026CC1D11D6D0002C79F2 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
+		3F9026CE1D11D908002C79F2 /* LogoText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoText.png; sourceTree = "<group>"; };
+		3F9026D01D11DB79002C79F2 /* photo-1439736637365-748f240b24fb.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "photo-1439736637365-748f240b24fb.jpeg"; sourceTree = "<group>"; };
+		3F9026D21D11E474002C79F2 /* LogoTextBold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoTextBold.png; sourceTree = "<group>"; };
+		3F9026D81D11EE9D002C79F2 /* Latinotype - Branding-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Latinotype - Branding-Black.otf"; sourceTree = "<group>"; };
+		3F9026D91D11EE9D002C79F2 /* Latinotype - Branding-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Latinotype - Branding-Bold.otf"; sourceTree = "<group>"; };
+		4AA4C329202142943DB0E6F9 /* Pods-NETMAPv2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NETMAPv2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NETMAPv2/Pods-NETMAPv2.debug.xcconfig"; sourceTree = "<group>"; };
+		8D84134AF3B6F317CAC36172 /* Pods-NETMAPv2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NETMAPv2.release.xcconfig"; path = "Pods/Target Support Files/Pods-NETMAPv2/Pods-NETMAPv2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60400BA3B0E39FCC99A06D5E /* libPods-NETMAPv2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +71,8 @@
 			children = (
 				3F0354281D10952900DEA065 /* NETMAPv2 */,
 				3F0354271D10952900DEA065 /* Products */,
+				6EEDCDE246E21155D3F0CAA5 /* Pods */,
+				91E14BD6B4BEF459EC99DF7B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +95,7 @@
 				3F0354351D10952900DEA065 /* Assets.xcassets */,
 				3F0354371D10952900DEA065 /* LaunchScreen.storyboard */,
 				3F03543A1D10952900DEA065 /* Info.plist */,
+				3F0354401D1099EB00DEA065 /* GoogleService-Info.plist */,
 				3F0354291D10952900DEA065 /* Supporting Files */,
 			);
 			path = NETMAPv2;
@@ -74,9 +104,36 @@
 		3F0354291D10952900DEA065 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3F9026D21D11E474002C79F2 /* LogoTextBold.png */,
+				3F9026D01D11DB79002C79F2 /* photo-1439736637365-748f240b24fb.jpeg */,
+				3F9026CE1D11D908002C79F2 /* LogoText.png */,
+				3F9026CC1D11D6D0002C79F2 /* Logo.png */,
+				3F9026D81D11EE9D002C79F2 /* Latinotype - Branding-Black.otf */,
+				3F9026D91D11EE9D002C79F2 /* Latinotype - Branding-Bold.otf */,
+				3F9026C61D11CC19002C79F2 /* Latinotype - Branding-Light.otf */,
+				3F9026C71D11CC19002C79F2 /* Latinotype - Branding-Medium.otf */,
+				3F9026C81D11CC19002C79F2 /* Latinotype - Branding-Semilight.otf */,
+				3F9026C91D11CC19002C79F2 /* Latinotype - Branding-Thin.otf */,
 				3F03542A1D10952900DEA065 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6EEDCDE246E21155D3F0CAA5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4AA4C329202142943DB0E6F9 /* Pods-NETMAPv2.debug.xcconfig */,
+				8D84134AF3B6F317CAC36172 /* Pods-NETMAPv2.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		91E14BD6B4BEF459EC99DF7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				316ACCD559EA37575DAB1F44 /* libPods-NETMAPv2.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,9 +143,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F03543D1D10952900DEA065 /* Build configuration list for PBXNativeTarget "NETMAPv2" */;
 			buildPhases = (
+				9D91F3C9858A8D968AC0525D /* [CP] Check Pods Manifest.lock */,
 				3F0354221D10952900DEA065 /* Sources */,
 				3F0354231D10952900DEA065 /* Frameworks */,
 				3F0354241D10952900DEA065 /* Resources */,
+				D607096038D96D92672299AD /* [CP] Embed Pods Frameworks */,
+				C80F444E22CDBF958C4D3038 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -110,6 +170,7 @@
 				TargetAttributes = {
 					3F0354251D10952900DEA065 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = D5F6WJW852;
 					};
 				};
 			};
@@ -136,13 +197,72 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F9026D41D11E67D002C79F2 /* Latinotype - Branding-Light.otf in Resources */,
+				3F9026D51D11E67D002C79F2 /* Latinotype - Branding-Medium.otf in Resources */,
+				3F9026D61D11E67D002C79F2 /* Latinotype - Branding-Semilight.otf in Resources */,
+				3F9026D71D11E67D002C79F2 /* Latinotype - Branding-Thin.otf in Resources */,
+				3F0354421D109C0C00DEA065 /* Main.storyboard in Resources */,
+				3F9026CF1D11D908002C79F2 /* LogoText.png in Resources */,
+				3F9026DB1D11EE9D002C79F2 /* Latinotype - Branding-Bold.otf in Resources */,
+				3F9026D31D11E474002C79F2 /* LogoTextBold.png in Resources */,
 				3F0354391D10952900DEA065 /* LaunchScreen.storyboard in Resources */,
+				3F9026DA1D11EE9D002C79F2 /* Latinotype - Branding-Black.otf in Resources */,
+				3F9026D11D11DB79002C79F2 /* photo-1439736637365-748f240b24fb.jpeg in Resources */,
+				3F9026CD1D11D6D0002C79F2 /* Logo.png in Resources */,
+				3F0354411D1099EB00DEA065 /* GoogleService-Info.plist in Resources */,
 				3F0354361D10952900DEA065 /* Assets.xcassets in Resources */,
-				3F0354341D10952900DEA065 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9D91F3C9858A8D968AC0525D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C80F444E22CDBF958C4D3038 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NETMAPv2/Pods-NETMAPv2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D607096038D96D92672299AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NETMAPv2/Pods-NETMAPv2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3F0354221D10952900DEA065 /* Sources */ = {
@@ -263,9 +383,12 @@
 		};
 		3F03543E1D10952900DEA065 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AA4C329202142943DB0E6F9 /* Pods-NETMAPv2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NETMAPv2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RM.NETMAPv2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -274,9 +397,12 @@
 		};
 		3F03543F1D10952900DEA065 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D84134AF3B6F317CAC36172 /* Pods-NETMAPv2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = NETMAPv2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RM.NETMAPv2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -302,6 +428,7 @@
 				3F03543F1D10952900DEA065 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
