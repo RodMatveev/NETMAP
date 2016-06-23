@@ -12,6 +12,13 @@
 @interface ViewController : UIViewController
 
 @property (weak,nonatomic) FIRDatabaseReference *dbRef;
+@property (weak,nonatomic) IBOutlet UISegmentedControl *modeSwitch;
+@property (weak,nonatomic) IBOutlet UITextField *homeTeam;
+@property (weak,nonatomic) IBOutlet UITextField *awayTeam;
+@property (weak,nonatomic) IBOutlet UITextField *homeGoals;
+@property (weak,nonatomic) IBOutlet UITextField *awayGoals;
+@property (weak,nonatomic) IBOutlet UISegmentedControl *tournamentSwitch;
+@property (weak,nonatomic) IBOutlet UIButton *readyButton;
+@property (weak,nonatomic) IBOutlet UIView *scoreView;
 
 @end
-

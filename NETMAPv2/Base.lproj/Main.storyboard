@@ -282,6 +282,16 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="awayGoals" destination="yI7-z4-jjK" id="92s-zC-c2M"/>
+                        <outlet property="awayTeam" destination="CXv-7q-kSB" id="fFw-og-zkG"/>
+                        <outlet property="homeGoals" destination="VKy-Fq-cqk" id="xao-OW-YSU"/>
+                        <outlet property="homeTeam" destination="izh-Ab-ojc" id="kzC-UK-dfT"/>
+                        <outlet property="modeSwitch" destination="Ni3-v9-u4O" id="75P-Jz-SVC"/>
+                        <outlet property="readyButton" destination="U9i-gx-pP9" id="wcP-nl-yOG"/>
+                        <outlet property="scoreView" destination="ewy-cI-ybg" id="Iy6-fv-PnF"/>
+                        <outlet property="tournamentSwitch" destination="Y4S-Nk-Uht" id="0aH-uU-XCy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
