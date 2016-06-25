@@ -25,6 +25,7 @@
     PNBarChart *barChart;
     PNLineChart *lineChart;
     NSMutableArray *errorArray;
+    NSMutableArray *errorArrayReverse;
     NSMutableArray *countArray;
     int trainingCount;
 }
@@ -56,6 +57,7 @@
     
     errorArray = [[NSMutableArray alloc] init];
     countArray = [[NSMutableArray alloc] init];
+    errorArrayReverse = [[NSMutableArray alloc]init];
 
     trainingCount = 0;
 }
@@ -142,7 +144,7 @@
 
 - (void)setUpErrorChart{
     lineChart = [[PNLineChart alloc] initWithFrame:self.rightGraph.frame];
-    [lineChart setXLabels:@[@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",]];
+    [lineChart setXLabels:@[@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@""]];
     lineChart.showSmoothLines = YES;
     [lineChart strokeChart];
     lineChart.delegate = self;
@@ -156,33 +158,29 @@
 }
 
 - (void)updateErrorChart{
-    PNLineChartData *data01 = [PNLineChartData new];
-    data01.color = [UIColor colorWithRed:1.000 green:0.373 blue:0.427 alpha:1.00];
-    data01.itemCount = [errorArray count];
-    NSLog(@"Updating error chart");
-    data01.getData = ^(NSUInteger index){
+    PNLineChartData *home = [PNLineChartData new];
+    home.color = [UIColor colorWithRed:1.000 green:0.373 blue:0.427 alpha:1.00];
+    home.itemCount = [errorArray count];
+    home.inflexionPointColor = [UIColor colorWithRed:1.000 green:0.373 blue:0.427 alpha:1.00];
+    home.inflexionPointStyle = PNLineChartPointStyleCircle;
+    home.getData = ^(NSUInteger index){
         NSNumber *error = errorArray[index];
         CGFloat yValue = [error floatValue];
         return [PNLineChartDataItem dataItemWithY:yValue];
     };
-    lineChart.chartData = @[data01];
-    NSNumber* highestError;
-    for (int i = 0; i < [errorArray count]; i++) {
-        if(i == 0){
-            highestError = errorArray[0];
-        }else{
-            NSNumber *error = errorArray[i];
-            if([error floatValue] > [highestError floatValue]){
-                highestError = error;
-            }
-        }
-    }
-    data01.color = [UIColor colorWithRed:1.000 green:0.373 blue:0.427 alpha:1.00];
-    data01.lineWidth = 10;
-    data01.inflexionPointColor = [UIColor colorWithRed:1.000 green:0.373 blue:0.427 alpha:1.00];
-    data01.inflexionPointStyle = PNLineChartPointStyleTriangle;
-    lineChart.yFixedValueMax = [highestError floatValue];
-    [lineChart updateChartData:@[data01]];
+    
+    PNLineChartData *away = [PNLineChartData new];
+    away.color = [UIColor colorWithRed:1.000 green:0.765 blue:0.443 alpha:1.00];
+    away.itemCount = [errorArrayReverse count];
+    away.inflexionPointColor = [UIColor colorWithRed:1.000 green:0.765 blue:0.443 alpha:1.00];
+    away.inflexionPointStyle = PNLineChartPointStyleTriangle;
+    away.getData = ^(NSUInteger index){
+        NSNumber *error = errorArrayReverse[index];
+        CGFloat yValue = [error floatValue];
+        return [PNLineChartDataItem dataItemWithY:yValue];
+    };
+    
+    lineChart.chartData = @[home,away];
     [lineChart strokeChart];
 }
 
@@ -254,6 +252,8 @@
         [weightsArray setObject:[NSNumber numberWithFloat:([weight floatValue] + [IDWC floatValue])] atIndexedSubscript:i];
     }
     NSLog(@"Weights array first cycle: \n%@",weightsArray);
+    [errorArray addObject:[NSNumber numberWithFloat:outputError]];
+   // [self updateErrorChart];
     [self reverseFixture];
 }
 
@@ -292,12 +292,12 @@
         outputError *= -1;
     }
     trainingCount++;
-    if(trainingCount % 2 == 0){
-        if([errorArray count] > 25){
+    if(trainingCount % 1 == 0){
+        if([errorArray count] > 100){
             [errorArray removeObjectAtIndex:0];
         }
         [countArray addObject:[NSNumber numberWithInt:trainingCount]];
-        [errorArray addObject:[NSNumber numberWithFloat:outputError]];
+        [errorArrayReverse addObject:[NSNumber numberWithFloat:outputError]];
         [self updateErrorChart];
     }
     [self saveWeights];
