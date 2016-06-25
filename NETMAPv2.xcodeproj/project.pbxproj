@@ -24,6 +24,14 @@
 		3F9026D71D11E67D002C79F2 /* Latinotype - Branding-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9026C91D11CC19002C79F2 /* Latinotype - Branding-Thin.otf */; };
 		3F9026DA1D11EE9D002C79F2 /* Latinotype - Branding-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9026D81D11EE9D002C79F2 /* Latinotype - Branding-Black.otf */; };
 		3F9026DB1D11EE9D002C79F2 /* Latinotype - Branding-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9026D91D11EE9D002C79F2 /* Latinotype - Branding-Bold.otf */; };
+		3FE9E4651D1EB04100883741 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE9E4641D1EB04100883741 /* UIKit.framework */; };
+		3FE9E4671D1EB04800883741 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE9E4661D1EB04800883741 /* CoreGraphics.framework */; };
+		3FE9E4691D1EB04D00883741 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE9E4681D1EB04D00883741 /* QuartzCore.framework */; };
+		3FE9E4751D1EB35700883741 /* BEMAverageLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9E46C1D1EB35700883741 /* BEMAverageLine.m */; };
+		3FE9E4761D1EB35700883741 /* BEMCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9E46E1D1EB35700883741 /* BEMCircle.m */; };
+		3FE9E4771D1EB35700883741 /* BEMLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9E4701D1EB35700883741 /* BEMLine.m */; };
+		3FE9E4781D1EB35700883741 /* BEMPermanentPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9E4721D1EB35700883741 /* BEMPermanentPopupView.m */; };
+		3FE9E4791D1EB35700883741 /* BEMSimpleLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9E4741D1EB35700883741 /* BEMSimpleLineGraphView.m */; };
 		60400BA3B0E39FCC99A06D5E /* libPods-NETMAPv2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 316ACCD559EA37575DAB1F44 /* libPods-NETMAPv2.a */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +58,19 @@
 		3F9026D21D11E474002C79F2 /* LogoTextBold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoTextBold.png; sourceTree = "<group>"; };
 		3F9026D81D11EE9D002C79F2 /* Latinotype - Branding-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Latinotype - Branding-Black.otf"; sourceTree = "<group>"; };
 		3F9026D91D11EE9D002C79F2 /* Latinotype - Branding-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Latinotype - Branding-Bold.otf"; sourceTree = "<group>"; };
+		3FE9E4641D1EB04100883741 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3FE9E4661D1EB04800883741 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3FE9E4681D1EB04D00883741 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3FE9E46B1D1EB35700883741 /* BEMAverageLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMAverageLine.h; sourceTree = "<group>"; };
+		3FE9E46C1D1EB35700883741 /* BEMAverageLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMAverageLine.m; sourceTree = "<group>"; };
+		3FE9E46D1D1EB35700883741 /* BEMCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMCircle.h; sourceTree = "<group>"; };
+		3FE9E46E1D1EB35700883741 /* BEMCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMCircle.m; sourceTree = "<group>"; };
+		3FE9E46F1D1EB35700883741 /* BEMLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMLine.h; sourceTree = "<group>"; };
+		3FE9E4701D1EB35700883741 /* BEMLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMLine.m; sourceTree = "<group>"; };
+		3FE9E4711D1EB35700883741 /* BEMPermanentPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMPermanentPopupView.h; sourceTree = "<group>"; };
+		3FE9E4721D1EB35700883741 /* BEMPermanentPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMPermanentPopupView.m; sourceTree = "<group>"; };
+		3FE9E4731D1EB35700883741 /* BEMSimpleLineGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMSimpleLineGraphView.h; sourceTree = "<group>"; };
+		3FE9E4741D1EB35700883741 /* BEMSimpleLineGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMSimpleLineGraphView.m; sourceTree = "<group>"; };
 		4AA4C329202142943DB0E6F9 /* Pods-NETMAPv2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NETMAPv2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NETMAPv2/Pods-NETMAPv2.debug.xcconfig"; sourceTree = "<group>"; };
 		8D84134AF3B6F317CAC36172 /* Pods-NETMAPv2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NETMAPv2.release.xcconfig"; path = "Pods/Target Support Files/Pods-NETMAPv2/Pods-NETMAPv2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,6 +80,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE9E4691D1EB04D00883741 /* QuartzCore.framework in Frameworks */,
+				3FE9E4671D1EB04800883741 /* CoreGraphics.framework in Frameworks */,
+				3FE9E4651D1EB04100883741 /* UIKit.framework in Frameworks */,
 				60400BA3B0E39FCC99A06D5E /* libPods-NETMAPv2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +111,7 @@
 		3F0354281D10952900DEA065 /* NETMAPv2 */ = {
 			isa = PBXGroup;
 			children = (
+				3FE9E46A1D1EB35700883741 /* BEMSimpleLineGraph */,
 				3F03542C1D10952900DEA065 /* AppDelegate.h */,
 				3F03542D1D10952900DEA065 /* AppDelegate.m */,
 				3F03542F1D10952900DEA065 /* ViewController.h */,
@@ -119,6 +144,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3FE9E46A1D1EB35700883741 /* BEMSimpleLineGraph */ = {
+			isa = PBXGroup;
+			children = (
+				3FE9E46B1D1EB35700883741 /* BEMAverageLine.h */,
+				3FE9E46C1D1EB35700883741 /* BEMAverageLine.m */,
+				3FE9E46D1D1EB35700883741 /* BEMCircle.h */,
+				3FE9E46E1D1EB35700883741 /* BEMCircle.m */,
+				3FE9E46F1D1EB35700883741 /* BEMLine.h */,
+				3FE9E4701D1EB35700883741 /* BEMLine.m */,
+				3FE9E4711D1EB35700883741 /* BEMPermanentPopupView.h */,
+				3FE9E4721D1EB35700883741 /* BEMPermanentPopupView.m */,
+				3FE9E4731D1EB35700883741 /* BEMSimpleLineGraphView.h */,
+				3FE9E4741D1EB35700883741 /* BEMSimpleLineGraphView.m */,
+			);
+			path = BEMSimpleLineGraph;
+			sourceTree = "<group>";
+		};
 		6EEDCDE246E21155D3F0CAA5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +173,9 @@
 		91E14BD6B4BEF459EC99DF7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3FE9E4681D1EB04D00883741 /* QuartzCore.framework */,
+				3FE9E4661D1EB04800883741 /* CoreGraphics.framework */,
+				3FE9E4641D1EB04100883741 /* UIKit.framework */,
 				316ACCD559EA37575DAB1F44 /* libPods-NETMAPv2.a */,
 			);
 			name = Frameworks;
@@ -269,8 +314,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE9E4781D1EB35700883741 /* BEMPermanentPopupView.m in Sources */,
+				3FE9E4761D1EB35700883741 /* BEMCircle.m in Sources */,
 				3F0354311D10952900DEA065 /* ViewController.m in Sources */,
+				3FE9E4771D1EB35700883741 /* BEMLine.m in Sources */,
 				3F03542E1D10952900DEA065 /* AppDelegate.m in Sources */,
+				3FE9E4751D1EB35700883741 /* BEMAverageLine.m in Sources */,
+				3FE9E4791D1EB35700883741 /* BEMSimpleLineGraphView.m in Sources */,
 				3F03542B1D10952900DEA065 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

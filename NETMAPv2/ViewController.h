@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BEMSimpleLineGraphView.h"
+#import "PNChart.h"
 @import Firebase;
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <BEMSimpleLineGraphDataSource, BEMSimpleLineGraphDelegate,PNChartDelegate>
 
 @property (weak,nonatomic) FIRDatabaseReference *dbRef;
 @property (weak,nonatomic) IBOutlet UISegmentedControl *modeSwitch;
@@ -20,5 +22,7 @@
 @property (weak,nonatomic) IBOutlet UISegmentedControl *tournamentSwitch;
 @property (weak,nonatomic) IBOutlet UIButton *readyButton;
 @property (weak,nonatomic) IBOutlet UIView *scoreView;
+@property (weak,nonatomic) IBOutlet UIView *leftGraph;
+@property (weak,nonatomic) IBOutlet UIView *rightGraph;
 
 @end

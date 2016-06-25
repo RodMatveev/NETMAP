@@ -7,7 +7,11 @@
 //
 
 #import "ViewController.h"
+#import <PNChart.h>
+#import "BEMSimpleLineGraphView.h"
 @import Firebase;
+
+#define ARC4RANDOM_MAX      0x100000000
 
 @interface ViewController (){
     NSDictionary *allData;
@@ -15,6 +19,14 @@
     NSString *mode;
     NSMutableArray *weightsArray;
     NSArray *chosenData;
+    NSNumber *output;
+    NSNumber *trainingOutput;
+    BEMSimpleLineGraphView *weightsGraph;
+    PNBarChart *barChart;
+    PNLineChart *lineChart;
+    NSMutableArray *errorArray;
+    NSMutableArray *countArray;
+    int trainingCount;
 }
 
 @end
@@ -27,6 +39,30 @@
     self.dbRef = [[FIRDatabase database] reference];
     chosenTournament = @"2016";
     [self fetchTournamentData];
+    
+    //Generate new weights (don't touch)
+    [self generateRandomWeights];
+    //
+    
+    //Try sigmoid
+    float sig = [self SFwithDeriv:YES andVal:1.2];
+    NSLog(@"Sig: %f",sig);
+    //
+    
+    //weightsGraph = [[BEMSimpleLineGraphView alloc]initWithFrame:self.leftGraph.frame];
+    //weightsGraph.delegate = self;
+    //weightsGraph.dataSource = self;
+    //[self.view addSubview:weightsGraph];
+    
+    errorArray = [[NSMutableArray alloc] init];
+    countArray = [[NSMutableArray alloc] init];
+
+    trainingCount = 0;
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self setUpWeightChart];
+    [self setUpErrorChart];
 }
 
 - (void)fetchTournamentData{
@@ -67,48 +103,252 @@
     }
 }
 
+//Set up graphs
+
+- (void)setUpWeightChart{
+    barChart = [[PNBarChart alloc] initWithFrame:self.leftGraph.frame];
+    [barChart setXLabels:@[@"F1",@"F2",@"FTS",@"MV",@"QG",@"QP"]];
+    [barChart setYValues:@[weightsArray[0],weightsArray[1],weightsArray[2],weightsArray[3],weightsArray[4],weightsArray[5]]];
+    barChart.layer.masksToBounds = YES;
+    barChart.layer.cornerRadius = 8;
+    barChart.chartMarginTop = 10;
+    barChart.chartMarginBottom = 0;
+    barChart.labelTextColor = [UIColor darkGrayColor];
+    barChart.isShowNumbers = NO;
+    barChart.isGradientShow = NO;
+    [barChart setStrokeColor:[UIColor colorWithRed:1.000 green:0.765 blue:0.443 alpha:1.00]];
+    [barChart setBarBackgroundColor:[UIColor colorWithRed:0.965 green:0.965 blue:0.965 alpha:1.00]];
+    [barChart setBarRadius:8];
+    [barChart strokeChart];
+    [self.view addSubview:barChart];
+}
+
+- (void)updateWeightChart{
+    [barChart setXLabels:@[@"F1",@"F2",@"FTS",@"MV",@"QG",@"QP"]];
+    [barChart updateChartData:@[weightsArray[0],weightsArray[1],weightsArray[2],weightsArray[3],weightsArray[4],weightsArray[5]]];
+    NSNumber* highestWeight;
+    for (int i = 0; i < 6; i++) {
+        if(i == 0){
+            highestWeight = weightsArray[0];
+        }else{
+            NSNumber *weight = weightsArray[i];
+            if([weight floatValue] > [highestWeight floatValue]){
+                highestWeight = weight;
+            }
+        }
+    }
+    barChart.yMaxValue = [highestWeight floatValue] + 2;
+}
+
+- (void)setUpErrorChart{
+    lineChart = [[PNLineChart alloc] initWithFrame:self.rightGraph.frame];
+    [lineChart setXLabels:@[@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",]];
+    lineChart.showSmoothLines = YES;
+    [lineChart strokeChart];
+    lineChart.delegate = self;
+    lineChart.chartMarginLeft = 10;
+    lineChart.chartMarginTop = 10;
+    lineChart.chartMarginBottom = 5;
+    lineChart.showCoordinateAxis = NO;
+    lineChart.layer.masksToBounds = YES;
+    lineChart.layer.cornerRadius = 8;
+    [self.view addSubview:lineChart];
+}
+
+- (void)updateErrorChart{
+    PNLineChartData *data01 = [PNLineChartData new];
+    data01.color = [UIColor colorWithRed:1.000 green:0.373 blue:0.427 alpha:1.00];
+    data01.itemCount = [errorArray count];
+    NSLog(@"Updating error chart");
+    data01.getData = ^(NSUInteger index){
+        NSNumber *error = errorArray[index];
+        CGFloat yValue = [error floatValue];
+        return [PNLineChartDataItem dataItemWithY:yValue];
+    };
+    lineChart.chartData = @[data01];
+    NSNumber* highestError;
+    for (int i = 0; i < [errorArray count]; i++) {
+        if(i == 0){
+            highestError = errorArray[0];
+        }else{
+            NSNumber *error = errorArray[i];
+            if([error floatValue] > [highestError floatValue]){
+                highestError = error;
+            }
+        }
+    }
+    data01.color = [UIColor colorWithRed:1.000 green:0.373 blue:0.427 alpha:1.00];
+    data01.lineWidth = 10;
+    data01.inflexionPointColor = [UIColor colorWithRed:1.000 green:0.373 blue:0.427 alpha:1.00];
+    data01.inflexionPointStyle = PNLineChartPointStyleTriangle;
+    lineChart.yFixedValueMax = [highestError floatValue];
+    [lineChart updateChartData:@[data01]];
+    [lineChart strokeChart];
+}
+
+//Chart delegates
+
+- (NSInteger)numberOfPointsInLineGraph:(BEMSimpleLineGraphView*)graph{
+    return 6;
+}
+
+- (CGFloat)lineGraph:(BEMSimpleLineGraphView*)graph valueForPointAtIndex:(NSInteger)index{
+    NSNumber *weight = weightsArray[(int)index];
+    return [weight floatValue];
+}
+
+//Sigmoid function
+
+- (float)SFwithDeriv:(BOOL)deriv andVal:(float)x{
+    if(deriv == YES){
+        float sig = 1/(1+(powf(M_E, -x)));
+        return sig*(1-sig);
+    }else{
+        return 1/(1+(powf(M_E, -x)));
+    }
+}
+
 //Pre-training
 
 - (void)generateRandomWeights{
     weightsArray = nil;
     weightsArray = [[NSMutableArray alloc]init];
-    for (int i=0; i<4; i++) {
-        float rand = arc4random();
-        [weightsArray addObject:[NSNumber numberWithFloat:rand]];
+    for (int i=0; i<6; i++) {
+        float range = 0.4 + 0.4 ;
+        float val = ((float)arc4random() / ARC4RANDOM_MAX) * range + 0.4;
+        val -= 0.8;
+        [weightsArray addObject:[NSNumber numberWithFloat:val]];
     }
+    NSLog(@"Random weights: \n%@",weightsArray);
 }
 
 //2 Layers
 
 - (IBAction)ready:(id)sender{
-    chosenData = [self constructInitialArray];
+    output = [NSNumber numberWithFloat:0];
+    chosenData = [self constructInitialArray:NO];
+    trainingOutput = [NSNumber numberWithInt:[self.homeGoals.text intValue]];
     NSLog(@"Chosen Data: \n%@",chosenData);
+    for (int i = 0; i < 6; i++) {
+        NSNumber *input = chosenData [i];
+        NSNumber *weight = weightsArray[i];
+        NSNumber *finalOutput = [NSNumber numberWithFloat:[self SFwithDeriv:NO andVal:([input floatValue]*[weight floatValue])]];
+        float addedOutput = [finalOutput floatValue]+[output floatValue];
+        output = [NSNumber numberWithFloat: addedOutput];
+    }
+    NSLog(@"Forward prop result: %f", [output floatValue]);
+    float outputError = [trainingOutput floatValue] - [output floatValue];
+    NSLog(@"Error: %f", outputError);
+    float outputDeriv = [self SFwithDeriv:YES andVal:[output floatValue]];
+    NSLog(@"Output Deriv: %f", outputDeriv);
+    float weightChange = outputError * outputDeriv;
+    NSMutableArray *inputDotWeightChange = [[NSMutableArray alloc]init];
+    for (int i =0; i < 6; i++){
+        NSNumber *input = chosenData[i];
+        NSNumber *IDWC = [NSNumber numberWithFloat:[input floatValue] * weightChange];
+        [inputDotWeightChange setObject:IDWC atIndexedSubscript:i];
+    }
+    for (int i = 0; i < 6; i++) {
+        NSNumber *weight = weightsArray[i];
+        NSNumber *IDWC = inputDotWeightChange[i];
+        [weightsArray setObject:[NSNumber numberWithFloat:([weight floatValue] + [IDWC floatValue])] atIndexedSubscript:i];
+    }
+    NSLog(@"Weights array first cycle: \n%@",weightsArray);
+    [self reverseFixture];
+}
+
+- (void)reverseFixture{
+    output = [NSNumber numberWithFloat:0];
+    chosenData = [self constructInitialArray:YES];
+    trainingOutput = [NSNumber numberWithInt:[self.awayGoals.text intValue]];
+    NSLog(@"Chosen Data: \n%@",chosenData);
+    for (int i = 0; i < 6; i++) {
+        NSNumber *input = chosenData [i];
+        NSNumber *weight = weightsArray[i];
+        NSNumber *finalOutput = [NSNumber numberWithFloat:[self SFwithDeriv:NO andVal:([input floatValue]*[weight floatValue])]];
+        float addedOutput = [finalOutput floatValue]+[output floatValue];
+        output = [NSNumber numberWithFloat: addedOutput];
+    }
+    NSLog(@"Forward prop result: %f", [output floatValue]);
+    float outputError = [trainingOutput floatValue] - [output floatValue];
+    NSLog(@"Error: %f", outputError);
+    float outputDeriv = [self SFwithDeriv:YES andVal:[output floatValue]];
+    NSLog(@"Output Deriv: %f", outputDeriv);
+    float weightChange = outputError * outputDeriv;
+    NSMutableArray *inputDotWeightChange = [[NSMutableArray alloc]init];
+    for (int i =0; i < 6; i++){
+        NSNumber *input = chosenData[i];
+        NSNumber *IDWC = [NSNumber numberWithFloat:[input floatValue] * weightChange];
+        [inputDotWeightChange setObject:IDWC atIndexedSubscript:i];
+    }
+    for (int i = 0; i < 6; i++) {
+        NSNumber *weight = weightsArray[i];
+        NSNumber *IDWC = inputDotWeightChange[i];
+        [weightsArray setObject:[NSNumber numberWithFloat:([weight floatValue] + [IDWC floatValue])] atIndexedSubscript:i];
+    }
+    NSLog(@"Weights array: \n%@",weightsArray);
+    [self updateWeightChart];
+    if (outputError < 0) {
+        outputError *= -1;
+    }
+    trainingCount++;
+    if(trainingCount % 2 == 0){
+        if([errorArray count] > 25){
+            [errorArray removeObjectAtIndex:0];
+        }
+        [countArray addObject:[NSNumber numberWithInt:trainingCount]];
+        [errorArray addObject:[NSNumber numberWithFloat:outputError]];
+        [self updateErrorChart];
+    }
+    [self saveWeights];
+    //NSLog(@"Error array: %@",errorArray);
 }
 
 //Construct final array with chosen data, flip values
 
-- (NSArray*)constructInitialArray{
+- (NSArray*)constructInitialArray:(BOOL)reverse{
+    NSString *homeTeam;
+    NSString *awayTeam;
+    if (reverse == YES) {
+        homeTeam = self.awayTeam.text;
+        awayTeam = self.homeTeam.text;
+    }else{
+        homeTeam = self.homeTeam.text;
+        awayTeam = self.awayTeam.text;
+    }
     int previousTournament = [chosenTournament intValue] - 4;
-    double f1 = ([allData[chosenTournament][self.homeTeam.text][@"F1"] doubleValue]) - ([allData[chosenTournament][self.awayTeam.text][@"F1"] doubleValue]);
-    double f2 = ([allData[chosenTournament][self.homeTeam.text][@"F2"] doubleValue]) - ([allData[chosenTournament][self.awayTeam.text][@"F2"] doubleValue]);
+    double f1 = ([allData[chosenTournament][homeTeam][@"F1"] doubleValue]) - ([allData[chosenTournament][awayTeam][@"F1"] doubleValue]);
+    f1 /= 10;
+    double f2 = ([allData[chosenTournament][homeTeam][@"F2"] doubleValue]) - ([allData[chosenTournament][awayTeam][@"F2"] doubleValue]);
+    f2 /= 10;
     double ftsHome;
     double ftsAway;
-    if([allData[[NSString stringWithFormat:@"%d", previousTournament]][self.homeTeam.text][@"FTS"] doubleValue]){
-        ftsHome = [allData[[NSString stringWithFormat:@"%d", previousTournament]][self.homeTeam.text][@"FTS"] doubleValue];
+    if([allData[[NSString stringWithFormat:@"%d", previousTournament]][homeTeam][@"FTS"] doubleValue]){
+        ftsHome = [allData[[NSString stringWithFormat:@"%d", previousTournament]][homeTeam][@"FTS"] doubleValue];
     }else{
         ftsHome = 8;
     }
-    if([allData[[NSString stringWithFormat:@"%d", previousTournament]][self.awayTeam.text][@"FTS"] doubleValue]){
-        ftsAway = [allData[[NSString stringWithFormat:@"%d", previousTournament]][self.awayTeam.text][@"FTS"] doubleValue];
+    if([allData[[NSString stringWithFormat:@"%d", previousTournament]][awayTeam][@"FTS"] doubleValue]){
+        ftsAway = [allData[[NSString stringWithFormat:@"%d", previousTournament]][awayTeam][@"FTS"] doubleValue];
     }else{
         ftsAway = 8;
     }
     double fts = ftsHome - ftsAway;
-    double mv = ([allData[chosenTournament][self.homeTeam.text][@"MV"] doubleValue]) - ([allData[chosenTournament][self.awayTeam.text][@"MV"] doubleValue]);
-    double qg = ([allData[chosenTournament][self.homeTeam.text][@"QG"] doubleValue]) - ([allData[chosenTournament][self.awayTeam.text][@"QG"] doubleValue]);
-    double qp = ([allData[chosenTournament][self.homeTeam.text][@"QP"] doubleValue]) - ([allData[chosenTournament][self.awayTeam.text][@"QP"] doubleValue]);
+    double mv = ([allData[chosenTournament][homeTeam][@"MV"] doubleValue]) - ([allData[chosenTournament][awayTeam][@"MV"] doubleValue]);
+    mv /= 100;
+    double qg = ([allData[chosenTournament][homeTeam][@"QG"] doubleValue]) - ([allData[chosenTournament][awayTeam][@"QG"] doubleValue]);
+    double qp = ([allData[chosenTournament][homeTeam][@"QP"] doubleValue]) - ([allData[chosenTournament][awayTeam][@"QP"] doubleValue]);
     NSArray *finalData = [[NSArray alloc] initWithObjects:[NSNumber numberWithDouble:f1], [NSNumber numberWithDouble:f2], [NSNumber numberWithDouble:fts], [NSNumber numberWithDouble:mv], [NSNumber numberWithDouble:qg], [NSNumber numberWithDouble:qp], nil];
     return finalData;
+}
+
+//Save weights after every cycle
+
+- (void)saveWeights{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"NETMAP_weights"];
+    [weightsArray writeToFile:filePath atomically:YES];
 }
 
 
