@@ -15,6 +15,7 @@
         </mutableArray>
         <mutableArray key="Latinotype - Branding-Medium.otf">
             <string>Branding-Medium</string>
+            <string>Branding-Medium</string>
         </mutableArray>
         <mutableArray key="Latinotype - Branding-Semilight.otf">
             <string>Branding-Semilight</string>
@@ -239,16 +240,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a9z-a3-Tch">
-                                <rect key="frame" x="13" y="313" width="280" height="272"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qdd-82-HHm">
                                 <rect key="frame" x="307" y="313" width="280" height="272"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -259,6 +250,25 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a9z-a3-Tch">
+                                <rect key="frame" x="13" y="313" width="280" height="272"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(21)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LU-NQ-4CX">
+                                <rect key="frame" x="251" y="47" width="28" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="hdC-IH-HXC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Branding-Medium" family="Branding" pointSize="20"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -275,6 +285,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Ydi-kC-xKO" secondAttribute="trailing" constant="-20" id="L3T-ff-8wb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="a9z-a3-Tch" secondAttribute="bottom" constant="15" id="MCL-h2-pDj"/>
                             <constraint firstItem="Ydi-kC-xKO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="79" id="OOg-ax-MFt"/>
+                            <constraint firstItem="gxr-LQ-7BI" firstAttribute="leading" secondItem="5LU-NQ-4CX" secondAttribute="trailing" constant="8" id="S3g-hI-Aw2"/>
                             <constraint firstItem="pB5-sE-NZS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="235" id="SOJ-k1-wdw"/>
                             <constraint firstItem="ewy-cI-ybg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="94" id="Sf4-w9-9bj"/>
                             <constraint firstItem="Ni3-v9-u4O" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="24" id="Svf-Hg-XHV"/>
@@ -282,8 +293,10 @@
                             <constraint firstItem="UiF-7h-Q48" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="UFd-sH-teG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ni3-v9-u4O" secondAttribute="trailing" id="UaY-mJ-FNt"/>
                             <constraint firstItem="Qdd-82-HHm" firstAttribute="leading" secondItem="a9z-a3-Tch" secondAttribute="trailing" constant="14" id="VKw-b0-5iG"/>
+                            <constraint firstItem="Ydi-kC-xKO" firstAttribute="top" secondItem="5LU-NQ-4CX" secondAttribute="bottom" constant="31" id="X4Q-7w-h0J"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UUb-pQ-ipn" secondAttribute="trailing" constant="-7" id="YcY-DF-4gu"/>
                             <constraint firstItem="UUb-pQ-ipn" firstAttribute="leading" secondItem="pB5-sE-NZS" secondAttribute="trailing" constant="14" id="ZVc-zg-0xo"/>
+                            <constraint firstItem="5LU-NQ-4CX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="27" id="ayz-bj-vto"/>
                             <constraint firstItem="a9z-a3-Tch" firstAttribute="width" secondItem="Qdd-82-HHm" secondAttribute="width" id="azk-gf-XeK"/>
                             <constraint firstItem="a9z-a3-Tch" firstAttribute="top" secondItem="pB5-sE-NZS" secondAttribute="bottom" constant="13" id="dnB-x6-ssB"/>
                             <constraint firstItem="pB5-sE-NZS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-7" id="hL0-3b-oCW"/>
@@ -318,6 +331,7 @@
                         <outlet property="rightGraph" destination="a9z-a3-Tch" id="liM-CA-0gO"/>
                         <outlet property="scoreView" destination="ewy-cI-ybg" id="Iy6-fv-PnF"/>
                         <outlet property="tournamentSwitch" destination="Y4S-Nk-Uht" id="0aH-uU-XCy"/>
+                        <outlet property="trialCount" destination="5LU-NQ-4CX" id="3CI-fK-F4c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

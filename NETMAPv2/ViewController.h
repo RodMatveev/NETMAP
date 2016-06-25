@@ -24,5 +24,6 @@
 @property (weak,nonatomic) IBOutlet UIView *scoreView;
 @property (weak,nonatomic) IBOutlet UIView *leftGraph;
 @property (weak,nonatomic) IBOutlet UIView *rightGraph;
+@property (weak,nonatomic) IBOutlet UILabel *trialCount;
 
 @end
